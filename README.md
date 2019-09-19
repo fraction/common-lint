@@ -11,7 +11,7 @@ Use `common-lint` or `clint` from the command-line or your linter settings.
 By default, this module passes through to `eslint`.
 
 ```console
-$ common-lint --help
+$ common-lint
 
 /home/alice/foo/index.js
   31:41  error  'val' is defined but never used  no-unused-vars
