@@ -8,15 +8,21 @@
   "license": "AGPL-3.0",
   "private": false,
   "dependencies": {
-    "eslint": "^6.4.0",
-    "find-package-json": "^1.2.0",
-    "standard": "^14.3.1"
+    "find-package-json": "^1.2.0"
+  },
+  "peerDependencies": {
+    "eslint": "*",
+    "standard": "*"
   },
   "bin": {
-    "common-lint": "index.js",
-    "clint": "index.js"
+    "common-lint": "./index.js",
+    "clint": "./index.js"
   },
   "scripts": {
-    "test": "index.js"
+    "test": "./index.js"
+  },
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "standard": "^14.3.1"
   }
 }

@@ -2,8 +2,6 @@
 
 > compatibility for both standard and eslint
 
-
-
 ## Usage
 
 Use `common-lint` or `clint` from the command-line or your linter settings.
@@ -37,13 +35,13 @@ standard: Run `standard --fix` to automatically fix some problems.
 With [npm](https://npmjs.org/):
 
 ```shell
-npm -g install common-readme
+npm -g install common-lint
 ```
 
 With [yarn](https://yarnpkg.com/en/):
 
 ```shell
-yarn global add common-readme
+yarn global add common-lint
 ```
 
 ## License
