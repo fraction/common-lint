@@ -14,11 +14,11 @@ By default, this module passes through to `eslint`.
 
 ```console
 $ common-lint --help
-eslint [options] file.js [file.js] [dir]
 
-Basic configuration:
-  --no-eslintrc                   Disable use of configuration from .eslintrc.*
-[...]
+/home/alice/foo/index.js
+  31:41  error  'val' is defined but never used  no-unused-vars
+
+✖ 1 problem (1 error, 0 warnings)
 ```
 
 ### StandardJS
@@ -26,12 +26,10 @@ Basic configuration:
 If `standard` is found in your `package.json`, this module uses that instead.
 
 ```console
-$ common-lint --help
-standard - Use JavaScript Standard Style (https://standardjs.com)
-
-Usage:
-    standard <flags> [FILES...]
-[...]
+$ common-lint
+standard: Use JavaScript Standard Style (https://standardjs.com)
+standard: Run `standard --fix` to automatically fix some problems.
+  /home/alice/bar/index.js:59:27: Extra semicolon.
 ```
 
 ## Installation
