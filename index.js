@@ -4,7 +4,6 @@ const findPackageJson = require('find-package-json')
 const childProcess = require('child_process')
 const path = require('path')
 const debug = require('debug')('common-lint')
-debug.enabled = true
 
 const args = process.argv.slice(2)
 
