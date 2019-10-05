@@ -2,6 +2,9 @@
 
 const findPackageJson = require('find-package-json')
 const childProcess = require('child_process')
+const path = require('path')
+const debug = require('debug')('common-lint')
+debug.enabled = true
 
 const args = process.argv.slice(2)
 
@@ -22,9 +25,14 @@ const finder = findPackageJson(startLocation)
 const packageFile = finder.next()
 const hasPackageFile = packageFile.value != null
 
-let command = 'eslint'
+const command = 'eslint'
 
+let config = null
 if (hasPackageFile) {
+  debug('has package file')
+  const packageFilePath = packageFile.filename
+  const modulePath = path.dirname(packageFilePath)
+  debug({ modulePath })
   const { dependencies, devDependencies } = packageFile.value
 
   const allDependencies = [dependencies, devDependencies]
@@ -33,7 +41,7 @@ if (hasPackageFile) {
   )
 
   if (hasStandard) {
-    command = 'standard'
+    config = path.join(modulePath, 'node_modules', 'standard', 'eslintrc.json')
   }
 }
 
@@ -46,8 +54,12 @@ Could not locate "${command}", is it installed?
 Please ensure that "${command} --help" works and then try again.
 `
 
+const prefix = config === null ? '' : ['--config', config]
+
 try {
-  childProcess.execFileSync(command, args, {
+  const commandArgs = [...prefix, ...args]
+  debug({ prefix, args, commandArgs })
+  childProcess.execFileSync(command, commandArgs, {
     stdio: 'inherit'
   })
 } catch (err) {
